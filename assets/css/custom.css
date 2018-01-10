@@ -1,0 +1,248 @@
+body{
+        font-family: 'Playfair Display';
+}
+
+
+
+.navbar-right li {
+	color: black;
+}
+.navbar-right li a span{
+	padding-top: 20px;
+	color: black;
+    padding-left: 20px;
+}
+.navbar-brand h3{
+	color: black;
+    margin-left: 24px;
+}
+.navbar-nav li a:hover{
+	background: white;
+
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 25px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: non;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #ffffff;
+}
+ .btn .caret {
+   margin-left: 30%;
+}
+
+ .btn .label{
+     right: 18%; 
+    color: black;
+    font-size: 12px;
+}  
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.form-control {
+
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+     left: -5%; 
+   /*  right: 30%; */
+}
+.btn-color {
+	background: #dec18c;
+	border-radius: 4px;
+	 -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 1px rgba(0, 0, 0, 0.3);
+    border-color: #dec18c;
+}
+
+
+.input-color{
+	background: #ccc;
+
+}
+ /* Small Devices, Tablets */
+    @media only screen and (max-width : 1200px) {
+
+		.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+     left: -8%; 
+   /*  right: 30%; */
+}
+  .btn .caret {
+    margin-left: 0%;
+} 
+  }
+     @media only screen and (max-width : 991px) {
+
+		.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+     left: -10%; 
+   /*  right: 30%; */
+}
+
+}
+
+ /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+    	.input-group{
+    		left: 0%;
+    	}
+
+
+    }
+
+.btn .caret {
+    margin-left: 37%;
+}
+    }
+   
+.raised-block {
+    background-color: #fff;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 3.95rem; // for us 0.625rem == 10px
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+}
+@media (max-width: 33.9em){ // this is for our mobile layout where columns stack
+    .raised-block {
+        margin-left: -0.625rem;
+    }
+}
+.row [class^="col-"]:first-child>.raised-block {
+    // this is so the first column has no margin so it will not be "indented"
+    margin-left: -0.625rem;
+}
+
+@media (min-width: 768px){
+
+.nav-justified>li>a {
+    margin-bottom: -15px;
+     text-align: left;
+
+}
+}
+.nav-justified>li>a{
+    color: black;
+    font-family: 'Playfair Display';
+}
+
+.nav-justified>li>a:hover{
+    background-color: white;
+
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: black;
+    background-color: white;
+}
+/* nav bar search box - drop down menu button */
+.navbar .navbar-search .dropdown-menu { min-width: 25px; }
+.dropdown-menu .label-icon { margin-left: 5px; }
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+@media only screen and (max-width: 991px){
+
+.input-group-design {
+    
+    left: 0%;
+    
+}
+}
+.glyphicon{
+        color: #dec18c;
+}
+
+
+/********************** footer css ********************8*/
+.footer-logo a{
+    color: black;
+    font-family: 'Playfair Display';
+    text-decoration: none;
+}
+.footer-item h3{
+    color: #04dbd1;
+    margin-left: 38px;
+
+}
+.footer-list ul{
+    list-style-type: none;
+    color: #777;
+}
+.footer-list ul li a{
+        font-family: 'Playfair Display';
+    font-size: 17px;
+    color: #999;
+    line-height: 1.8;
+}
+.footer-list ul li a:hover{
+    color: #d2b889;
+    margin-left: 4px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+.footer-item p{
+      font-family: 'Playfair Display';
+       color: #999;
+       font-size: 16px;
+       margin-left: 38px;
+       margin-bottom: 190px;
+       line-height: 41px;
+}
+

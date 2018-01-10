@@ -1,0 +1,13 @@
+.product-categories-home li ul li:hover
+{
+	background-color: #dec18c;
+	cursor: pointer;
+    padding-left: 1em;
+    border-radius: 5px;
+    transition: all 0.3s ease-out
+}
+.product-categories-home li a
+{
+	color: white;
+	cursor: pointer;
+}
