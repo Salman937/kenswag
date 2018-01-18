@@ -32,8 +32,6 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php bs() ?>assets/css/custom_style.css">
 
-
-	<noscript>
 	<style type="text/css">
 
 		.wishlist_table .add_to_cart,a.add_to_wishlist.button.alt
@@ -46,9 +44,49 @@
 		{
 			opacity:1;
 		}
-		
+		.alert-bg
+		{
+			background-color: red;
+			color: white;
+		}
+
+		ul.dropdown-cart{
+		    min-width:550px;
+		}
+		ul.dropdown-cart li .item{
+		    display:block;
+		    padding:3px 10px;
+		    margin: 3px 0;
+		}
+		ul.dropdown-cart li .item:hover{
+		    background-color:#f3f3f3;
+		}
+		ul.dropdown-cart li .item:after{
+		    visibility: hidden;
+		    display: block;
+		    font-size: 0;
+		    content: " ";
+		    clear: both;
+		    height: 0;
+		}
+
+		ul.dropdown-cart li .item-left{
+		    float:left;
+		}
+		ul.dropdown-cart li .item-left img,
+		ul.dropdown-cart li .item-left span.item-info{
+		    float:left;
+		}
+		ul.dropdown-cart li .item-left span.item-info{
+		    margin-left:10px;   
+		}
+		ul.dropdown-cart li .item-left span.item-info span{
+		    display:block;
+		}
+		ul.dropdown-cart li .item-right{
+		    float:right;
+		}
 	</style>
-	</noscript>
 
 </head>
 <body class="page-template-default page page-id-28 footer-static header-1 woocommerce wpb-js-composer js-comp-ver-5.1.1 vc_responsive">
@@ -56,7 +94,7 @@
 		<div class="top-bar mobile-top-bar-hide">
 		<div class="container">
 			<div class="row">
-				<div class="sidebar top-bar-left col-md-4">
+				<div class="sidebar top-bar-left col-md-3">
 				 <aside id="text-4" class="widget widget_text">
 				 	<div class="textwidget">
 
@@ -71,18 +109,154 @@
 				 	</div> 
 				 </aside>
 				</div>
-				<div class="sidebar top-bar-right col-md-8"> 
+				<div class=" col-md-6">
+
+					<?php if (!empty($this->session->flashdata('success'))): ?>
+							
+						<div class="alert alert-danger" style="background-color:#23bb07;color :white;border:0px">
+					 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					 		<i class="fa fa-bell" aria-hidden="true"></i> <?php echo $this->session->flashdata('success'); ?>
+				 		</div>
+
+					<?php endif ?>
+
+
+					<?php if (empty($message)): ?>
+
+						<?php if (!empty($this->session->flashdata('error'))): ?>
+							
+							<div class="alert alert-danger" style="background-color:#ab2e2b;color :white;border:0px">
+						 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						 		<?php echo $this->session->flashdata('error'); ?>
+					 		</div>
+
+						<?php endif ?>						 	
+
+					<?php else: ?>
+					
+						<div class="alert alert-danger" style="background-color:#ab2e2b;color :white;border:0px">
+						 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						 	 <?php echo $message;?>
+						 </div>
+
+					<?php endif ?>
+				</div>
+				<div class="sidebar top-bar-right col-md-3"> 
+					
 					<aside id="nav_menu-5" class="widget widget_nav_menu">
 						<div class="menu-topbar-menu-container">
 							<ul id="menu-topbar-menu" class="menu">
+
+							<?php if ($this->session->userdata('user_group_id') == 3): ?>
 								
 								<li id="menu-item-2563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2563">
-									<a href="../wishlist-2/index.html"  data-toggle="modal" data-target="#salman">Login</a>
+									<a href="<?php bs() ?>upload-product">Sell your Product</a>
+								</li>
+
+								<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Items<span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-cart" role="menu">
+              <li>
+                  <span class="item">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" class="img-circle" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        
+                    </span>
+                </span>
+              </li>
+               <li class="divider"></li>
+              <li>
+                  <span class="item">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" class="img-circle" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        
+                    </span>
+                </span>
+              </li>
+               <li class="divider"></li>
+              <li>
+                  <span class="item">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" class="img-circle" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        
+                    </span>
+                </span>
+              </li>
+               <li class="divider"></li>
+              <li>
+                  <span class="item">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" class="img-circle" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        
+                    </span>
+                </span>
+              </li>
+             
+             
+          </ul>
+        </li>
+
+								<li class="dropdown">
+									<img src="<?php bs() ?>assets/images/Account.png" alt="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" width="20">
+
+							          <ul class="dropdown-menu">
+							            <li><a href="<?php bs() ?>seller-dashboard">Dashboard</a></li>
+							            <li><a href="<?php bs()?>Auth/logout">Logout</a></li>
+							          </ul>
+							        </li>
+
+							<?php elseif ($this->session->userdata('user_group_id') == 2): ?>  
+
+								<?php $user = $this->ion_auth->user()->row(); ?>
+
+								<li id="menu-item-2563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2563">
+									<a href=""><?php echo $user->username ?></a>
+								</li>
+
+								<li class="dropdown">
+									<img src="<?php bs() ?>assets/images/Account.png" alt="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" width="20">
+
+						          <ul class="dropdown-menu">
+						            <li><a href="<?php bs() ?>seller-dashboard">Dashboard</a></li>
+						            <li><a href="<?php bs() ?>Auth/logout">Logout</a></li>
+						          </ul>
+						        </li>      
+
+							<?php else: ?>	
+
+								<li id="menu-item-2563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2563">
+									<a href="#" data-toggle="modal" data-target="#salman">Login</a>
 								</li>
 								<li id="menu-item-2564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2564"><a href="" data-toggle="modal" data-target="#myModal">Signup</a>
 								</li>
-								<li id="menu-item-2565" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2564"><a href=""><i class="fa fa-user"></i></a>
-								</li>
+
+							<?php endif ?>	
+
+								
 							</ul>
 						</div>
 					</aside>
@@ -103,29 +277,42 @@
 				</div>
 				<div class="modal-body">
 					<div class="container">
-						<i class="fa fa-user"></i>
-						<form>
+						<img src="<?php bs() ?>assets/images/Account.png" alt="">
+						<form id="signup" method="post" action="<?php bs() ?>register-user">
 							<div class="form-group row">
 								<div class="col-xs-11">
-									<input class="form-control" id="ex3" type="text" placeholder="User name">
+									<input class="form-control" id="firstname" name="firstname" type="text" placeholder="First Name" required>
+								</div>
+								<div class="col-xs-11">
+									<input class="form-control" id="lastname" name="lastname" type="text" placeholder="Last Name" required>
+								</div>
+								<div class="col-xs-11">
+									<input class="form-control" id="username" name="username" type="text" placeholder="User name" required>
 								</div> 
 								<div class="col-xs-11">
-									<input class="form-control" id="ex3" type="text" placeholder="Email">
+									<input class="form-control" id="email" name="email" type="text" placeholder="Email" required>
 								</div> 
 								<div class="col-xs-11">
-									<input class="form-control" id="ex3" type="text" placeholder="Password">
+									<input class="form-control" id="pass" minlength="8" maxlength="20" name="password" type="password" placeholder="Password" required>
+								</div>
+								<div class="col-xs-11">
+									<input class="form-control" id="phone" name="phone" type="text" placeholder="Phone No" required>
 								</div>
 								<div class="col-xs-5 col-xs-offset-1">
-  									<label class="radio-inline"><input type="radio" name="optradio">Buyer</label>
-									
+  									<label class="radio-inline">
+  										<input type="radio" name="optradio" value="2" checked required>
+  										Buyer
+  									</label>
 								</div>
 								<div class="col-xs-5">
-  									
-									<label class="radio-inline"><input type="radio" name="optradio">Seller</label>
+									<label class="radio-inline">
+										<input type="radio" name="optradio" value="3" required>
+										Seller
+									</label>
 								</div>
 								
 								<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
-									<button type="button" class="btn btn-custom btn-block">SIGN UP</button>
+									<button type="submit" class="btn btn-custom btn-block">SIGN UP</button>
 									<p class="text-center">Or</p>
 								</div>
 								<div class="col-xs-12" style="margin-top: 2px;">
@@ -155,19 +342,21 @@
 			</div>
 			<div class="modal-body">
 				<div class="container">
-					<form>
+					<form id="login-form" action="<?php bs() ?>Auth/login" method="post">
 					<div class="form-group row">
 						<div class="col-xs-11">
-							<input class="form-control" id="ex3" type="text" placeholder="User name">
+							<input class="form-control" id="identity" name="identity" type="email" placeholder="Enter Your Email" required>
 						</div> 
 						
 						<div class="col-xs-11">
-							<input class="form-control" id="ex3" type="text" placeholder="Password">
+							<input class="form-control" id="password" name="password" type="password" placeholder="Enter Your Password" required>
 						</div>
-						
-						
+						<div class="col-xs-11">
+							<?php echo lang('login_remember_label', 'remember');?>
+	    					<?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+						</div>
 						<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
-							<button type="button" class="btn btn-custom btn-block">LOGIN</button>
+							<button type="submit" class="btn btn-custom btn-block">LOGIN</button>
 							<p class="text-center">Or</p>
 						</div>
 						<div class="col-xs-12" style="margin-top: 2px;">
@@ -203,7 +392,10 @@
 					</div>
 					<div class="shopping-cart-wrapper header-customize-item no-price style-default">
 						<div class="widget_shopping_cart_content">
-							<div class="widget_shopping_cart_icon"> <i class="wicon fa fa-shopping-cart"></i> <span class="total">0</span>
+							<div class="widget_shopping_cart_icon"> 
+								<!-- <i class="wicon fa fa-shopping-cart"></i>  -->
+								<img src="<?php bs() ?>assests/images/shopping-cart.png" alt="">
+								<span class="total">0</span>
 							</div>
 							<div class="sub-total-text"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>0.00</span>
 							</div>
@@ -1102,6 +1294,35 @@ var xmenu_meta_custom = [];
 <script src="<?php bs() ?>assets/wp-content/cache/min/1/2c2fc06dfa084e4f97927116527c1130.js" data-minify="1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js'></script>
+
+
 </body>
 <!-- Mirrored from themes.g5plus.net/handmade/home-01/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Jan 2018 08:13:39 GMT -->
 </html>
+
+<script>
+
+$("#signup").validate({
+  rules: {
+    field: {
+      required: true,
+      minlength: 3,
+    },
+    phone:{
+    	number: true
+    }
+  }
+});
+
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+
+</script>
+
+<script>
+  $('#login-form').validate();
+</script>
