@@ -298,33 +298,16 @@
 								<div class="col-xs-11">
 									<input class="form-control" id="phone" name="phone" type="text" placeholder="Phone No" required>
 								</div>
-<<<<<<< HEAD
-								<div class="col-xs-5 col-xs-offset-1">
-  									<label class="radio-inline">
-  										<input type="radio" name="optradio" value="2" checked required>
-  										Buyer
-  									</label>
-								</div>
-								<div class="col-xs-5">
-									<label class="radio-inline">
-										<input type="radio" name="optradio" value="3" required>
-										Seller
-									</label>
-								</div>
-								
-								<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
-									<button type="submit" class="btn btn-custom btn-block">SIGN UP</button>
-=======
 								<div class="col-xs-5 col-xs-offset-1" >
 									
 									<div class="radio-item">
-   								 <input type="radio" id="ritema" name="optradio" value="ropt1">
+   								 <input type="radio" id="ritema" name="optradio" value="2">
     								<label for="ritema">Buyer</label>
 									</div>
 									</div>
 								<div class="col-xs-5 col-xs-offset-1" >
 									<div class="radio-item">
-									    <input type="radio" id="ritemb" name="optradio" value="ropt2">
+									    <input type="radio" id="ritemb" name="optradio" value="3">
 									    <label for="ritemb">Seller</label>
 									</div>
 								</div>
@@ -332,7 +315,6 @@
   									
 								<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
 									<button type="button" class="btn btn-custom btn-block" id="button1">SIGN UP</button>
->>>>>>> dcfe0821e5a7a930b2a36ab2c868394842ad9466
 									<p class="text-center">Or</p>
 								</div>
 								<div class="col-xs-12" style="margin-top: 2px;">
@@ -376,11 +358,7 @@
 	    					<?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
 						</div>
 						<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
-<<<<<<< HEAD
-							<button type="submit" class="btn btn-custom btn-block">LOGIN</button>
-=======
 							<button type="button" class="btn btn-custom btn-block" id="button1">LOGIN</button>
->>>>>>> dcfe0821e5a7a930b2a36ab2c868394842ad9466
 							<p class="text-center">Or</p>
 						</div>
 						<div class="col-xs-12" style="margin-top: 2px;">
