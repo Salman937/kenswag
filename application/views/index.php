@@ -298,6 +298,7 @@
 								<div class="col-xs-11">
 									<input class="form-control" id="phone" name="phone" type="text" placeholder="Phone No" required>
 								</div>
+<<<<<<< HEAD
 								<div class="col-xs-5 col-xs-offset-1">
   									<label class="radio-inline">
   										<input type="radio" name="optradio" value="2" checked required>
@@ -313,14 +314,33 @@
 								
 								<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
 									<button type="submit" class="btn btn-custom btn-block">SIGN UP</button>
+=======
+								<div class="col-xs-5 col-xs-offset-1" >
+									
+									<div class="radio-item">
+   								 <input type="radio" id="ritema" name="optradio" value="ropt1">
+    								<label for="ritema">Buyer</label>
+									</div>
+									</div>
+								<div class="col-xs-5 col-xs-offset-1" >
+									<div class="radio-item">
+									    <input type="radio" id="ritemb" name="optradio" value="ropt2">
+									    <label for="ritemb">Seller</label>
+									</div>
+								</div>
+
+  									
+								<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
+									<button type="button" class="btn btn-custom btn-block" id="button1">SIGN UP</button>
+>>>>>>> dcfe0821e5a7a930b2a36ab2c868394842ad9466
 									<p class="text-center">Or</p>
 								</div>
 								<div class="col-xs-12" style="margin-top: 2px;">
 									<div class="col-xs-6">
-										<button type="button" class="btn btn-custom btn-block"><i class="fa fa-facebook pull-left"></i>Sign up facebook</button>
+										<button type="button" class="btn btn-custom btn-block" id="button2"><i class="fa fa-facebook pull-left"></i>Sign up facebook</button>
 									</div>
 									<div class="col-xs-6">
-										<button type="button" class="btn btn-custom btn-block"><i class="fa fa-google pull-left"></i>Sign up with Google</button>
+										<button type="button" class="btn btn-custom btn-block" id="button2"><i class="fa fa-google pull-left"></i>Sign up with Google</button>
 									</div>
 								</div>
 							</div>
@@ -329,7 +349,7 @@
 				</div>
 			</div>
 		</div>
-		</div> <!--- signup popover close-->
+		</div> <!--- signup popover close
 
 			<!-- login popover -->
 <div id="salman" class="modal fade" role="dialog">
@@ -356,15 +376,19 @@
 	    					<?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
 						</div>
 						<div class="col-xs-6" style="margin-left: 24%;margin-top: 22px;">
+<<<<<<< HEAD
 							<button type="submit" class="btn btn-custom btn-block">LOGIN</button>
+=======
+							<button type="button" class="btn btn-custom btn-block" id="button1">LOGIN</button>
+>>>>>>> dcfe0821e5a7a930b2a36ab2c868394842ad9466
 							<p class="text-center">Or</p>
 						</div>
 						<div class="col-xs-12" style="margin-top: 2px;">
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-custom btn-block"><i class="fa fa-facebook pull-left"></i>Login with facebook</button>
+								<button type="button" class="btn btn-custom btn-block" id="button2"><i class="fa fa-facebook pull-left"></i>Login with facebook</button>
 							</div>
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-custom btn-block"><i class="fa fa-google pull-left"></i>Login with Google</button>
+								<button type="button" class="btn btn-custom btn-block" id="button2"><i class="fa fa-google pull-left"></i>Login with Google</button>
 							</div>
 						</div>
 					</div>
@@ -523,7 +547,7 @@
  									<div class="vc_column-inner ">
  										<div class="wpb_wrapper">
  											<div class="handmade-banner custom bot-right"> 
- 												<div class="bg-img" style="height:700px; background-image: url(<?php bs() ?>assets/wp-content/uploads/2015/09/banner-home-1.jpg);">
+ 												<div class="bg-img" style="height:450px;margin-top: -3px; background-image: url(<?php bs() ?>assets/wp-content/uploads/2015/09/banner-home-1.jpg);">
  												</div>
  												<div class="overlay-banner"> 
  													<!-- <a class="link-banner" title="" target="_self" href="#"> -->
@@ -533,7 +557,7 @@
  													<!-- </a> -->
  												</div>
  											</div>
- 									<div data-height="1400" class="sc-product-categories-home-wrap p-color-bg style-01">
+ 									<div  class="sc-product-categories-home-wrap p-color-bg style-01">
  										<ul class="product-categories-home">
  											<li>
  												<a title="Special Goods">
@@ -583,6 +607,66 @@
  												<a href="" title="Every Day">Beauty, Makeup, and Cosmetics
  												</a>
  											</li>
+ 											</ul>
+ 											<a class="show-more" title="Show More" data-toggle="modal" data-target="#khan">
+ 												<i class="fa fa-angle-down" title="Show More"></i>
+ 											</a>
+ 											</div>
+ 											 <div class="modal fade" id="khan" role="dialog" >
+    											<div class="modal-dialog">
+    											 <div class="modal-content" >
+        											
+        												<div  class="sc-product-categories-home-wrap p-color-bg style-01" style="margin-left:100px">
+
+    											<ul  class="product-categories-home" >
+    											<li>
+ 												<a title="Special Goods">
+ 													Household Utensils (Kitchen)
+ 												</a>
+ 											</li>
+ 											<li>
+ 												<a href="../product-category/romantic/index.html" title="Romantic">Furniture</a>
+ 											</li>
+ 											<li>
+ 												<a  title="" id="btn-2" data-toggle="collapse" data-target="#submenu2" class="toggle" aria-expanded="false">Fashion and design</a>
+ 												<ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-2">
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Women
+ 													</li>
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Men
+ 													</li>
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Girls
+ 													</li>
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Boys
+ 													</li>
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Shoes
+ 													</li>
+ 													<li>
+ 														<i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i> Sandals
+ 													</li>
+ 												</ul>
+ 											</li>
+ 											<li>
+ 												<a href="#" title="">
+ 												Bedroom</a>
+ 											</li>
+ 											<li>
+ 												<a href="" title="">Electronics</a>
+ 											</li>
+ 											<li>
+ 												<a href="" title="">Automobile</a>
+ 											</li>
+ 											<li>
+ 												<a href="." title="Greeting Cards">Hair and Salon (beauty shop)</a>
+ 											</li>
+ 											<li>
+ 												<a href="" title="Every Day">Beauty, Makeup, and Cosmetics
+ 												</a>
+ 											</li>	
  											<li>
  												<a href="" title="Birthday Gifts">Spa, and Massage Services</a>
  											</li>
@@ -592,7 +676,7 @@
  											<li>
  												<a href="" title="Birthday Gifts">Hotel and Reservation</a>
  											</li>
- 											<li>
+ 												 											<li>
  												<a href="" title="Birthday Gifts">Bus Booking Services</a>
  											</li>
  											<li>
@@ -653,10 +737,12 @@
  												<a href="" title="Birthday Gifts">Groceries</a>
  											</li>
  										</ul> 
- 											<a class="show-more">
- 												<i class="fa fa-angle-down"></i>
- 											</a>
- 										</div>
+ 										 
+ 												<!-- <a class="show-more" title="Show More" data-toggle="modal" data-target="#myModal">
+ 												<i class="fa fa-angle-down" title="Show More"></i>
+ 											</a> -->
+ 											
+ 										</div></div></div></div>
  					 			</div>
  							</div>
  						</div>
@@ -1269,8 +1355,19 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();</script> 
 
+<script type="text/javascript">
+	function ChangeColor() {
+            var lableText = document.getElementById('rad2');
+            lableText.style.color = "red";
+        }
 
 
+
+</script>
+<script type="text/javascript">
+
+$("#myModal").modal()
+</script>
 <script type='text/javascript'>/*  */
 var g5plus_framework_constant = {"product_compare":"Compare","product_wishList":"WishList"};
 var g5plus_framework_ajax_url = "index.html\/\/themes.g5plus.net\/handmade\/wp-admin\/admin-ajax.php?activate-multi=true";

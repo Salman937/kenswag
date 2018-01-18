@@ -6,11 +6,12 @@
     border-radius: 5px;
     transition: all 0.3s ease-out
 }
-.product-categories-home li a
+.product-categories-home li 
 {
 	color: white;
 	cursor: pointer;
 }
+<<<<<<< HEAD
 .error
 {
 	color: red;
@@ -51,3 +52,6 @@ ul.dropdown-cart li .item-left span.item-info span{
 ul.dropdown-cart li .item-right{
     float:right;
 }
+=======
+
+>>>>>>> dcfe0821e5a7a930b2a36ab2c868394842ad9466
