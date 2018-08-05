@@ -1,184 +1,228 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="<?php bs() ?>assets/css/custom.css">
- 
-  	
-</head>
-
-<body>
-	
-
-	<section class="menu-top">
-		<nav class="navbar navbar-custom">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar" style="background-color: black;"></span>
-						<span class="icon-bar" style="background-color: black;"></span>
-						<span class="icon-bar" style="background-color: black;"></span>                        
-					</button>
-					
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li><a class="navbar-brand" href="#"><h3>WebSiteName</h3></a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href=""><p>Sell your products</p></a>
-						</li>
-						<li><a href="#">
-							<h3><span class="glyphicon glyphicon-user">
-							</span></h3></a>
-						</li>
-						<li><a href="#"><h3><span class="glyphicon glyphicon-log-in"></span></h3> </a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-  
-	</section>
-	<section>
-		<div class="container">
-			<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-
-				<div class="btn-group col-md-3 col-sm-5 col-xs-11 ">
-				  	<button data-toggle="dropdown" class="btn btn-custom btn-block dropdown-toggle"  data-placeholder="Please select"><span class="label">Checked option</span> <span class="caret"></span></button>
-  					    <ul class="dropdown-menu">
-  					      <li><a href="">ABCD</li></a>
-  					      <li><a href="">ABCD</li></a>
-  					      <li><a href="">ABCD</li></a>
-  					      <li><a href="">ABCD</li></a>
-  					    </ul>
-				</div>
-				<div class="col-md-8 col-sm-6 col-xs-11">
-		            <form>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-	            </div>
-	            <div>
-					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</div>
-	        </div>
-	    </section>
-		<div class="container">
-			<hr>
-		</div>
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5">
-					<div class="row">
-						<div class="col-md-12"  style="background: #ccc; height: 410px;">
-							
-						</div>
-					</div> 
-					<br>
-					<div class="row">
-						<div class="col-md-12" style="">
-
-							<div class="col-md-3 col-sm-6 col-xs-6" style="background-color: gray; border: 2px solid white; height: 110px;">
-								<p>hello</p>
-							</div>
-								<div class="col-md-3 col-sm-6 col-xs-6" style="border: 2px solid white; height: 110px; background-color: gray;">
-								<p>hello</p>
-							</div>
-								<div class="col-md-3 col-sm-6 col-xs-6" style="border: 2px solid white; height: 110px; background-color: gray;">
-								<p>hello</p>
-							</div>
-								<div class="col-md-3 col-sm-6 col-xs-6" style="border: 2px solid white; height: 110px; background-color: gray;">
-								<p>hello</p>
-							</div>
-
-							
-						</div>
+	<div class="container">
+		<hr>
+	</div>
+<section>
+	<div class="container">
+		<div class="row">
+		  <form id="upload" action="<?php bs() ?>upload-product" method="post" enctype="multipart/form-data">
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="files" class="">
+                        	<img src="<?php bs() ?>assets/images/placeholder_large.png" id="main_img" height="400" style="width: 100%">
+                    	</label>
+                    	<input id="files" name="img[]" type="file" class="main_img visible">
 					</div>
-				</div>
-				<div class="col-md-6 col-md-offset-1">
-					<form>
-							<div class="form-group">
-								<div class="col-xs-10">
-									<input class="form-control input-color" id="ex3" type="text" placeholder="Post title">
-									<br>
-								</div>
-								<div class="col-xs-10">
-									<select class="form-control input-color" id="sel1">
-									<option>Choose category</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									</select>
-									<br>
-								</div>
-								<div class="col-xs-10">
-									<input class="form-control input-color" id="ex3" type="text" placeholder="Price">
-									<br>
-								</div> 
-								
-								<div class="col-xs-10">
-  									<textarea class="form-control input-color" rows="4" id="comment" placeholder="Descrption">
-  									</textarea>
-  								<br>
-  								</div>	 
-								
-								<div class="col-xs-5 ">
-									<input class="form-control input-color" id="ex3" type="text" placeholder="Email"><br>
-								</div>
-									<div class="col-xs-5">
-									<input type="text" class="form-control input-color" id="ex3" placeholder="Location">
-								</div>
-									<br>
-									<div class="col-xs-10">
-									<input class="form-control input-color" id="ex3" type="text" placeholder="Phone Number">
+				</div> 
+				<br>
+				<div class="row">
+					<div class="col-md-12" style="">
 
-								</div>
-								<div class="col-xs-10">
-									<hr>
-									
-								</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<label for="1st_img" class="">
+								<img src="<?php bs() ?>assets/images/placeholder_small.png" id="first_img" width="100" height="100">
+							</label>
+							<input id="1st_img" name="img[]" type="file" class="1st_img visible">
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<label for="2nd_img" class="">
+							<img src="<?php bs() ?>assets/images/placeholder_small.png" id="sec_img" width="100" height="100">
+							</label>
+							<input id="2nd_img" name="img[]" type="file" class="2nd_img visible">
 
-								<div class="col-xs-6" style="margin-left: 20%;margin-top: 22px;">
-									<button type="button" class="btn btn-color btn-custom btn-block">Submit your post</button>
-								</div> 
-								
-								</div>
-							</form>	
-					</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<label for="3rd_img" class="">
+							<img src="<?php bs() ?>assets/images/placeholder_small.png" id="thr_img" width="100" height="100">
+							</label>
+							<input id="3rd_img" name="img[]" type="file" class="3rd_img visible">
+
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<label for="4th_img" class="">
+								<img src="<?php bs() ?>assets/images/placeholder_small.png" id="fourth_img" width="100" height="100">
+							</label>
+							<input id="4th_img" name="img[]" type="file" class="4th_img visible">
+						</div>
+
 						
-					
-				
-				
+					</div>
 				</div>
-				
 			</div>
+			<div class="col-md-6 col-md-offset-1">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<input class="form-control input-color" name="post_title" type="text" placeholder="Post title" required>
+							<br>
+						</div>
+						<div class="col-xs-12">
+							<select class="form-control input-color" name="cateogry" id="cat" required>
+							<option value="">Choose category</option>
+								<?php foreach ($categories as $value): ?>
+
+									<option value="<?php echo $value->id ?>"><?php echo $value->name ?></option>
+
+								<?php endforeach ?>
+							</select>
+							<br>
+						</div>
+						<div class="col-xs-12 sub_cat">
+						</div>
+
+						<div class="col-xs-12">
+							<input class="form-control input-color" name="price" type="number" placeholder="Price" required>
+							<br>
+						</div> 
+						
+						<div class="col-xs-12">
+							<textarea class="form-control input-color" name="desc" rows="4" id="comment" placeholder="Description" required></textarea>
+							<br>
+						</div>	 
+						
+						<div class="col-xs-6 ">
+							<input class="form-control input-color" name="email" type="email" placeholder="Email" required><br>
+						</div>
+							<div class="col-xs-6">
+							<input type="text" class="form-control input-color" name="loc" placeholder="Location" required>
+						</div>
+							<br>
+						<div class="col-xs-12">
+							<input class="form-control input-color" type="number" name="phone" placeholder="Phone Number" required>
+							<br>
+						</div>
+						<div class="col-xs-12">
+							<input class="form-control input-color" type="number" name="qty" placeholder="Quantity" required>
+						</div>
+
+						<div class="col-xs-6" style="margin-left: 20%;margin-top: 22px;">
+							<button type="submit" class="btn btn-color btn-custom btn-block">Submit your post</button>
+						</div> 
+						
+						</div>
+					</form>	
+				</div>
+			</div>
+		</div>
+</section>
+
+<script>
+
+//getting sub categories
+$('body').on('change', '#cat', function(event) 
+{
+	event.preventDefault();
+	/* Act on the event */
+
+	var id = $('#cat').val();
+
+	$.ajax({
+		url: '<?php bs() ?>Seller_dasboard/sub_categories',
+		type: 'POST',
+        data: {id:id},
+	})
+	.done(function(success) 
+	{
+		$('.sub_cat').html(success);
+	})
+	.fail(function() {
+		console.log("error");
+	})
+});	
+
+function readURL(input) 
+{
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#main_img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(".main_img").change(function() 
+{
+  readURL(this);
+});
+
+function first_img(input) 
+{
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#first_img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(".1st_img").change(function() 
+{
+  first_img(this);
+});
 
 
+function second_img(input) 
+{
 
-			
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-			
-		
+    reader.onload = function(e) {
+      $('#sec_img').attr('src', e.target.result);
+    }
 
-	</section>
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
+$(".2nd_img").change(function() 
+{
+  second_img(this);
+});
 
-	
+function thr_img(input) 
+{
 
- 
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-</body>
-</html>
+    reader.onload = function(e) {
+      $('#thr_img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(".3rd_img").change(function() 
+{
+  thr_img(this);
+});
+
+function fourth_img(input) 
+{
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#fourth_img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(".4th_img").change(function() 
+{
+  fourth_img(this);
+});
+
+</script>

@@ -18,17 +18,32 @@ class Auth extends MY_Controller
 
 		$this->lang->load('auth');
 
-		// pr($this->session->userdata());die;
+		$this->load->library('cart');
+
+		// pr($this->session->all_userdata());die;
 	}
 
 	/**
 	 * Redirect if needed, otherwise display the user list
 	 */
 	public function index()
-	{
+	{	
+		$data['title'] = 'KK & M merchants';
 
+		// Select Leatest Products
+		$select = "products.id AS id,products.title AS title,products.price AS price,products_resources.url As img_url,products_resources.products_id AS product_id,products.quantity AS qty";
 
-		view('index');
+		$joni_tbl = "products.id = products_resources.products_id";
+
+		$order_by = 'id desc';
+
+		$data['products'] = $this->common_model->DJoin($select,'products','products_resources',$joni_tbl,'','',$order_by,'products_resources.products_id',8);
+
+		
+		// pr($data['products']);die;
+
+		$data['page'] = 'index';
+		view('template',$data);
 	}
 
 	/**
@@ -44,23 +59,76 @@ class Auth extends MY_Controller
 
 		if ($this->form_validation->run() === TRUE)
 		{
+			$identity = $this->input->post('identity');
+			$password = $this->input->post('password');
+
 			// check to see if the user is logging in
 			// check for "remember me"
 			$remember = (bool)$this->input->post('remember');
 
+
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
-				//if the login is successful
-				//redirect them back to the home page
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				// $destry = array('identity','email','user_id','old_last_login','last_check','user_group_id');
+
+				// $this->session->unset_userdata($destry);
+
+				// $string = mt_rand(100000, 999999);
+
+				// $data = array('verification_code' => $string);
+
+				// $where = array('email' => $identity);
+
+				// $this->common_model->UpdateDB('users',$where,$data);
+
+				// $newdata = array(
+				//                    'new_email' => $identity,
+				//                    'pass'      => $password,
+				//                    'remember'  => $remember,
+				//                 );
+
+				// $this->session->set_userdata($newdata);
+
+
+				// $Message = 'Hi Dear, <br> Your Verification code is: <br> <h3>'.$string.'</h3> <br><br> Thanks';
+			
+				// $config = array(
+				// 	'mailtype' => 'html',
+				// 	'charset'  => 'utf-8',
+				// 	'wordwrap' => TRUE
+				// );
+				
+				// $this->load->library('email', $config);
+	
+				// $this->email->from('info@swatshawls.com','Kenswag');
+				// $this->email->to($identity);
+				// $this->email->subject('Verification');
+				// $this->email->message($Message);
+				// $send = $this->email->send();
+					
+				// if($send) 
+				// {
+				// 	$msg = "Please Check Your Email to Verify your Account";
+				// 	$this->session->set_flashdata('success',$msg);
+				// 	redirect('Auth/authentication','refresh');
+				// }
+				// else
+				// {
+				// 	$msg = "Email Can't Send";
+				// 	$this->session->set_flashdata('error',$msg);
+				// 	redirect('/','refresh');
+				// }
+				// if the login was un-successful
+				// redirect them back to the login page
+				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				redirect('/', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 			else
 			{
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -69,7 +137,66 @@ class Auth extends MY_Controller
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			$this->_render_page('index', $this->data);
+			// Select Leatest Products
+			$select   = "products.id AS id,products.title AS title,products.price AS price,products_resources.url As img_url,products_resources.products_id AS product_id,products.quantity AS qty";
+
+			$joni_tbl = "products.id = products_resources.products_id";
+
+			$order_by = 'id desc';
+
+			$this->data['products'] = $this->common_model->DJoin($select,'products','products_resources',$joni_tbl,'','',$order_by,'products_resources.products_id',8);
+		
+
+			$this->data['page'] = 'index';
+			$this->_render_page('template', $this->data);
+		}
+	}
+
+	/*
+		Two Factor Authentication
+	*/
+	public function Authentication()
+	{
+		if ($this->input->post()) 
+		{
+			// validate form input
+			$this->form_validation->set_rules('code','Code' , 'trim|required|numeric');
+
+			if ($this->form_validation->run() === TRUE)
+			{
+				$code = $this->input->post('code');
+
+				$check = $this->common_model->getAllData('users','verification_code', array('verification_code' => $code));
+
+				if (!empty($check[0]->verification_code)) 
+				{
+					if ($this->ion_auth->login($this->session->userdata('new_email'),$this->session->userdata('pass'),$this->session->userdata('remember'))) 
+					{
+						$destry = array('new_email','pass','remember');
+
+						$this->session->unset_userdata($destry);
+
+						$msg = "Your Verification Completed Successfully";
+						$this->session->set_flashdata('success',$msg);
+						redirect('/','refresh');
+					}
+				}
+				else
+				{
+					$msg = "You have Enter wrong Code, Please Try Again";
+					$this->session->set_flashdata('error',$msg);
+					redirect('Auth/Authentication','refresh');
+				}
+			}	
+			else
+			{
+				$data['message'] = validation_errors();
+				view('two_factor_auth');
+			}
+		} 
+		else 
+		{
+			view('two_factor_auth');
 		}
 	}
 
@@ -81,11 +208,14 @@ class Auth extends MY_Controller
 		$this->data['title'] = "Logout";
 
 		// log the user out
-		$logout = $this->ion_auth->logout();
+		$destry = array('identity','email','user_id','old_last_login','last_check','user_group_id','group_id','group_name','nvpReqArray');
+
+		$this->session->unset_userdata($destry);
+		// $logout = $this->ion_auth->logout();
 
 		// redirect them to the login page
-		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('Auth', 'refresh');
+		// $this->session->set_flashdata('message', $this->ion_auth->messages());
+		redirect('/', 'refresh');
 	}
 
 	/**
@@ -97,7 +227,7 @@ class Auth extends MY_Controller
 		$this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
 		$this->form_validation->set_rules('new_confirm', $this->lang->line('change_password_validation_new_password_confirm_label'), 'required');
 
-		if (!$this->ion_auth->logged_in() || $this->ion_auth->is_seller() != 1)
+		if (!$this->ion_auth->logged_in())
 		{
 			redirect('Auth', 'refresh');
 		}
@@ -140,6 +270,8 @@ class Auth extends MY_Controller
 				'type'  => 'hidden',
 				'value' => $user->id,
 			);
+
+			$this->data['title'] = "Change Password";
 
 			$this->data['page'] = 'auth/change_password';
 			$this->_render_page('dashboard',$this->data);
@@ -466,52 +598,112 @@ class Auth extends MY_Controller
 
 		if ($result)
 		{
+			$Message = 'Hello!, <br><br> Welcome to KK & M here is your verification code: <br> <h3>'.$string.'</h3>';
 
-			$Message = 'Hi Dear, <br> Your Verification code is: <br> <h3>'.$string.'</h3> <br><br> Thanks';
+			$config = array(
+								'mailtype' => 'html',
+								'charset'  => 'utf-8',
+								'wordwrap' => TRUE
+							);
+				
+			$this->load->library('email', $config);
 
 			$this->email->set_mailtype("html");
-			
-			$config = array(
-				'protocol' => 'sendmail',
-				'mailtype' => 'html',
-				'charset' => 'utf-8',
-				'wordwrap' => TRUE
-			);
-			$this->load->library('email', $config);
-			$this->email->set_newline("\r\n");
+			$this->email->from('info@techeasesol.com','Kenswag');
+			$this->email->to($email);
 			$this->email->subject('Email Verification');
 			$this->email->message($Message);
-			$this->email->from('@gmail.com','Kenswag');
-			$this->email->to($email);
 			$send = $this->email->send();
 				
 			if($send) 
 			{
+
+
 				$msg = "Please Check Your Email to Verify your Account";
 				$this->session->set_flashdata('success',$msg);
-				redirect('Auth','refresh');
+				redirect('code-verify','refresh');
 			}
 			else
 			{
-				$msg = "Please Check Your Email to Verify your Account";
+				$msg = "Email Can't Send";
 				$this->session->set_flashdata('error',$msg);
 				redirect('Auth','refresh');
 			}
 
-			// check to see if we are creating the user
+					// check to see if we are creating the user
 			// redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			redirect("seller-dashboard", 'refresh');
 		}
 		else
 		{
+			// Select Leatest Products
+			$select   = "products.title AS title,products.price AS price,products_resources.url As img_url,products_resources.products_id AS product_id,products.quantity AS qty";
+
+			// $select = "*";
+
+			$joni_tbl = "products.id = products_resources.products_id";
+
+			$this->data['products'] = $this->common_model->DJoin($select,'products','products_resources',$joni_tbl,'','','"product_id", "desc"','products_resources.products_id',8);
+
 			// display the create user form
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$this->_render_page('index',$this->data);
+			$this->data['page'] = 'index';
+			$this->_render_page('template',$this->data);
 		}
 	}
+
+	/*
+		Activate a User
+	*/
+	function verifycode()
+	{
+		if ($this->input->post()) 
+		{
+			// validate form input
+			$this->form_validation->set_rules('code','Code' , 'trim|required|numeric');
+
+			if ($this->form_validation->run() === TRUE)
+			{
+				$code = $this->input->post('code');
+
+				$check = $this->common_model->getAllData('users','verification_code', array('verification_code' => $code));
+
+				if (!empty($check[0]->verification_code)) 
+				{
+					$data = array('active' => 1);
+
+					$where = array('verification_code' => $code);
+
+					$status_update = $this->common_model->UpdateDB('users',$where,$data);
+
+					if ($status_update) 
+					{
+						$msg = "Your Code Verified Successfully, Now you can Login";
+						$this->session->set_flashdata('success',$msg);
+						redirect('Auth','refresh');
+					}
+				}
+				else
+				{
+					$msg = "You have Enter wrong Code, Please Try Again";
+					$this->session->set_flashdata('error',$msg);
+					redirect('code-verify','refresh');
+				}
+			}	
+			else
+			{
+				$data['message'] = validation_errors();
+				view('verify_user');
+			}
+		} 
+		else 
+		{
+			view('verify_user');
+		}
+	}					
 
 	/**
 	 * Edit a user

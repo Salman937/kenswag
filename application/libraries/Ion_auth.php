@@ -353,11 +353,11 @@ class Ion_auth
 			$user            = $this->ion_auth_model->user($id)->row();
 
 			$data = array(
-				'identity'   => $user->{$identity},
-				'id'         => $user->id,
-				'email'      => $email,
-				'activation' => $activation_code,
-			);
+							'identity'   => $user->{$identity},
+							'id'         => $user->id,
+							'email'      => $email,
+							'activation' => $activation_code,
+						 );
 			if(!$this->config->item('use_ci_email', 'ion_auth'))
 			{
 				$this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
@@ -587,6 +587,17 @@ class Ion_auth
 	public function is_seller()
 	{
 		if ($this->session->userdata('user_group_id') == 3) 
+		{
+			return TRUE;
+		} 
+		else
+		{
+			return FALSE;
+		}
+	}
+	public function is_buyer()
+	{
+		if ($this->session->userdata('user_group_id') == 2) 
 		{
 			return TRUE;
 		} 

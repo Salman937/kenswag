@@ -1,3 +1,3 @@
-<?php view('template/header.php') ?>
+<?php view('template/dashboard_header.php') ?>
 <?php view($page) ?>
-<?php view('template/footer.php') ?>
+<?php view('template/dashboard_footer.php') ?>

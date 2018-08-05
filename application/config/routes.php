@@ -68,3 +68,39 @@ $route['change-password'] = 'Auth/change_password';
 //update user profile route
 $route['save'] = 'Seller_dasboard/edit_profile';
 
+//user registration code verification code
+$route['code-verify'] = 'Auth/verifycode';
+
+//user login 
+$route['login'] = 'Auth/login';
+
+//Sepcific Product Details
+$route['product-detail/:num'] = 'Products/view_product';
+
+//checkout
+$route['checkout'] = 'cart/checkout';
+
+//edit product
+$route['edit-product/(:any)'] = 'Seller_dasboard/edit_product';
+
+// buyer dashboard route
+$route['buyer-dashboard'] = 'Buyer_dashboard';
+
+// Feature Product route
+$route['featured-products'] = 'Products/feature_products';
+
+// Product Category route
+$route['products-category/(:any)'] = 'products/products_by_category';
+
+// Product Category route
+$route['search-products/(:any)'] = '';
+
+$route['contactus'] = 'AboutUs/contactus';
+
+
+//products by category
+// $route['products/(:any)'] = 'Products/products_by_category';
+
+
+
+

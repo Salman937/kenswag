@@ -16,7 +16,7 @@ class Common_model extends CI_Model
 			return true;
 		endif;
 	}
-	function getAllData($table,$specific='',$Where='',$order='',$limit='',$groupBy='')
+	function getAllData($table,$specific='',$Where='',$order='',$limit='',$groupBy='',$like = '')
 	{
 		// If Condition
 		if (!empty($Where)):
@@ -40,6 +40,11 @@ class Common_model extends CI_Model
 		if (!empty($limit)):
 			$this->db->limit($limit);
 		endif;
+
+		//if like
+		if(!empty($like)):
+			$this->db->like('title', $like);
+		endif;	
 		// get Data
 		$GetData = $this->db->get($table);
 		return $GetData->result();
@@ -66,7 +71,7 @@ class Common_model extends CI_Model
 			return false;
 		}
 	}
-	function DJoin($field,$tbl,$jointbl1,$Joinone,$jointbl3='',$Where='',$order='',$groupy = '')
+	function DJoin($field,$tbl,$jointbl1,$Joinone,$jointbl3='',$Where='',$order='',$groupy = '',$limit = '',$like = '')
     {
         $this->db->select($field);
         $this->db->from($tbl);
@@ -86,6 +91,14 @@ class Common_model extends CI_Model
         if(!empty($Where)):
             $this->db->where($Where);
         endif;
+        if(!empty($limit)):
+            $this->db->limit($limit);
+        endif;
+        
+        if(!empty($like)):
+            $this->db->like('title', $like);
+        endif;
+
         $query=$this->db->get();
         return $query->result();
     }
@@ -157,6 +170,42 @@ class Common_model extends CI_Model
           return $FileReturn;
             }
         }
+	}
+	public function socail_login($data,$username,$email,$table)
+	{
+	  $this->db->where('email',$email);
+	  $this->db->limit(1);
+	  $users = $this->db->count_all_results($table);
+
+	  if(!isset($users) || $users < 1)
+	  {
+	    $this->load->helper('string');
+
+	    $password = random_string('alnum',10); // we create a random password for the user...
+
+	    $register_id = $this->ion_auth->register($username,$password,$email,$data,array('2'));
+
+	    // pr($register_id);die();
+
+	    if($register_id)
+	    {
+	      $this->ion_auth->activate($register_id);
+	      $this->ion_auth->login($email,$password, TRUE);
+	    }
+	  }
+	  else
+	  {
+	    $user = $this->db->where(array('email'=>$email))->limit(1)->get($table)->row();
+
+	    $sess_data = array('identity' => $user->username, 
+	    				   'username' => $user->username,
+	    				   'email'    => $user->email,
+	    				   'user_id'  => $user->id,
+	    				   'old_last_login' => $user->last_login);
+
+	    $this->session->set_userdata($sess_data);
+	  }
+	  return TRUE;
 	}
 }
 ?>

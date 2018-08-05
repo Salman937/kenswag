@@ -102,7 +102,7 @@ body{
 
 
 .input-color{
-	background: #ccc;
+	background: #f3f2f2;
 
 }
  /* Small Devices, Tablets */
@@ -202,7 +202,7 @@ body{
 }
 }
 .glyphicon{
-        color: #dec18c;
+        color: #54ccd6;
 }
 
 
@@ -245,4 +245,7 @@ body{
        margin-bottom: 190px;
        line-height: 41px;
 }
-
+.col-md-12 .visible
+{
+    display: none;
+}

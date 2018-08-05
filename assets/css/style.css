@@ -190,7 +190,8 @@ width: 290px;
 position: absolute;
 z-index: 4;
 top: 0;
-left: -34px;
+left: -35px;
+/*height: 200px;*/
 -webkit-transform: translate(50px, 60px);
 -moz-transform: translate(50px, 60px);
 -ms-transform: translate(50px, 60px);
@@ -246,7 +247,7 @@ radio-item {
   height: 12px;
   position: absolute;
   top: 9px;
-  left: 10px;
+  left: 19px;
   content: " ";
   display: block;
   background: linear-gradient(to right,#21bed2,#30cec7);
